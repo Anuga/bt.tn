@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>bt.tn</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script type="text/javascript">
+
+      function bttn(current) {
+
+
+        $.getJSON(BASE + "counter?id=" + BTTN)
+        .done(function(data) {
+          if(current === undefined) { current = data['counter']; }
+          if(current != data['counter']) {
+            current = data['counter'];
+            dosomething();
+          }
+          $("body").html(data['counter']);
+        })
+        .fail(function() {
+        })
+        .always(function() {
+          setTimeout(function () { bttn(current); }, 5000);
+        });
+      }
+
+      function dosomething() {
+        # Add code.
+      }
+
+      bttn();
+
+    </script>
+    <style>
+      html, body { height: 100%; }
+      html { display: table; margin: auto;  }
+      body {
+        display: table-cell;
+        vertical-align: middle;
+        font: bold 20vw monospace;
+      }
+      ul, li { list-style-type: none; }
+    </style>
+  </head>
+  <body></body>
+</html>
